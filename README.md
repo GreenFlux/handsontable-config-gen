@@ -70,4 +70,4 @@ The AI analyzes your data and automatically:
 
 ## Demo
 
-Live demo at: [https://handsontable-config-gen.vercel.app/](handsontable-config-gen.vercel.app)
+Live demo at: [handsontable-config-gen.vercel.app](https://handsontable-config-gen.vercel.app/)
