@@ -1,0 +1,810 @@
+/* Retro Hacker Theme CSS Variables */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #1a1a25;
+  --bg-tertiary: #25253a;
+  --text-primary: #e0e0ff;
+  --text-secondary: #a0a0cc;
+  --text-accent: #9359cb;
+  --border-color: #404055;
+  --shadow: 0 0 20px rgba(147, 89, 203, 0.15);
+  --brand-primary: #9359cb;
+  --brand-secondary: #b085db;
+  --accent-success: #4ade80;
+  --accent-warning: #fbbf24;
+  --accent-error: #f87171;
+  --glow: 0 0 10px rgba(147, 89, 203, 0.5);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(147, 89, 203, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(147, 89, 203, 0.05) 0%, transparent 50%);
+}
+
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  color: var(--brand-primary);
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  text-shadow: var(--glow);
+  letter-spacing: -0.02em;
+}
+
+.header-title-with-effect {
+  position: relative;
+  background: var(--brand-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.header-title-with-effect::before {
+  content: 'Handsontable Config Generator';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    150px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(255, 255, 255, 0.8),
+    rgba(147, 89, 203, 0.9) 40%,
+    var(--brand-primary) 80%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.app-header:hover .header-title-with-effect::before {
+  opacity: 1;
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.settings-toggle-btn,
+.handsontable-docs-btn {
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.settings-toggle-btn:hover,
+.handsontable-docs-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--brand-primary);
+}
+
+.settings-section {
+  margin-bottom: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-content {
+  padding: 1.5rem;
+}
+
+.setting-item {
+  margin-bottom: 1rem;
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+}
+
+.setting-item label {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.api-key-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.api-key-input {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease;
+}
+
+.api-key-input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(147, 89, 203, 0.2);
+}
+
+.api-key-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.api-key-status {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.setting-description {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.setting-description a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.setting-description a:hover {
+  text-decoration: underline;
+}
+
+/* Data Input Section */
+.data-input-section {
+  margin-bottom: 1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.data-source-tabs {
+  display: flex;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-source-tabs .tab {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-right: 1px solid var(--border-color);
+}
+
+.data-source-tabs .tab:last-child {
+  border-right: none;
+}
+
+.data-source-tabs .tab:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.data-source-tabs .tab.active {
+  background: var(--brand-primary);
+  color: white;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px 8px 0 0;
+}
+
+.api-controls,
+.upload-controls,
+.paste-controls {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.api-controls select,
+.upload-controls input[type="file"] {
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.mockoon-attribution {
+  margin: 0.75rem 0 0 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.mockoon-attribution a {
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+.mockoon-attribution a:hover {
+  text-decoration: underline;
+}
+
+.paste-input-group {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.paste-input-group textarea {
+  flex: 1;
+  min-height: 100px;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.process-btn,
+.regenerate-btn {
+  padding: 0.75rem 1rem;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.process-btn:hover,
+.regenerate-btn:hover {
+  background: var(--brand-secondary);
+  box-shadow: var(--glow);
+}
+
+.process-btn:disabled,
+.regenerate-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+.status {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: var(--bg-tertiary);
+}
+
+.loading {
+  color: var(--accent-warning);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.generating {
+  color: var(--brand-primary);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.ready {
+  color: var(--accent-success);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px var(--brand-primary); }
+  to { text-shadow: 0 0 15px var(--brand-primary), 0 0 20px var(--brand-primary); }
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 1rem;
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+}
+
+
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.table-container {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--bg-secondary);
+  width: 100%;
+  min-height: 500px;
+}
+
+.table-container .handsontable {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Comprehensive Handsontable Dark Theme */
+.table-container .handsontable {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Table cells */
+.table-container .htCore td {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Headers */
+.table-container .htCore th,
+.table-container .htCore thead th,
+.table-container .htCore .columnHeader {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Row headers */
+.table-container .htCore .htRowHeader {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Selected cells */
+.table-container .htCore td.htSelected {
+  background-color: rgba(100, 181, 246, 0.2) !important;
+}
+
+/* Table borders */
+.table-container .htCore tbody th,
+.table-container .htCore thead th,
+.table-container .htCore td {
+  border-color: var(--border-color) !important;
+}
+
+/* Dropdown menu styling */
+.htDropdownMenu {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.htDropdownMenu .htCore td {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.htDropdownMenu .htCore td:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* Context menu styling */
+.htContextMenu {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.htContextMenu .htCore td {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.htContextMenu .htCore td:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* Filters */
+.htFiltersDropdownMenu {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Input fields in table */
+.table-container .handsontableInput {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Scrollbars */
+.table-container .htCore::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-container .htCore::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.table-container .htCore::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.table-container .htCore::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.app-footer {
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.app-footer a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+  color: var(--brand-secondary);
+}
+
+
+.config-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt-input-section {
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prompt-input-section label {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.custom-prompt-input {
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.4;
+}
+
+.custom-prompt-input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(147, 89, 203, 0.2);
+}
+
+.custom-prompt-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Config Tabs */
+.config-tabs {
+  display: flex;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.config-tab {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-right: 1px solid var(--border-color);
+  position: relative;
+}
+
+.config-tab:last-child {
+  border-right: none;
+}
+
+.config-tab:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.config-tab.active {
+  background: var(--brand-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px 8px 0 0;
+}
+
+.config-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand-secondary);
+}
+
+.tab-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.config-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.copy-config-btn {
+  padding: 0.5rem 1rem;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-config-btn:hover {
+  background: var(--brand-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(147, 89, 203, 0.4);
+}
+
+.copy-css-btn {
+  padding: 0.5rem 1rem;
+  background: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-css-btn:hover {
+  background: var(--brand-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(147, 89, 203, 0.4);
+}
+
+.copy-css-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.config-content {
+  margin: 0;
+  padding: 1rem;
+  background: #1e1e1e;
+  color: var(--brand-primary);
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 400px;
+}
+
+/* Config content scrollbars */
+.config-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.config-content::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.config-content::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+.config-content::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}
+
+.config-content code {
+  color: var(--brand-primary);
+}
+
+/* Syntax highlighting for JSON */
+.config-content .string { color: #ce9178; }
+.config-content .number { color: #b5cea8; }
+.config-content .boolean { color: #569cd6; }
+.config-content .null { color: #569cd6; }
+.config-content .key { color: #9cdcfe; }
+
+/* Additional mobile responsiveness */
+@media (max-width: 480px) {
+  .app {
+    padding: 0.5rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .header-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .settings-toggle-btn,
+  .handsontable-docs-btn {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  
+  .table-container {
+    min-height: 400px;
+  }
+  
+  .config-panel {
+    max-height: 300px;
+  }
+}
