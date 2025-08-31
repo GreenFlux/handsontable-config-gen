@@ -311,12 +311,25 @@ IMPORTANT RULES:
 STYLING CAPABILITIES:
 - Generate CSS classes for any styling requests
 - Use className property in column config to apply styles
-- Create appropriate CSS selectors for Handsontable cells
-- Examples:
-  * Bold text: .bold-column { font-weight: bold !important; }
-  * Colored backgrounds: .status-active { background: #d4edda !important; color: #155724 !important; }
-  * Custom fonts: .mono-text { font-family: 'JetBrains Mono', monospace !important; }
-  * Highlights: .highlight-column { background: rgba(147, 89, 203, 0.15) !important; }
+- Create appropriate CSS selectors for Handsontable cells using: .table-container .htCore td.your-class-name
+- IMPORTANT: Always use !important to override Handsontable's default styles
+
+AVAILABLE CSS VARIABLES (use these for consistent theming):
+- --brand-primary: #9359cb (purple)
+- --brand-secondary: #b085db (light purple)
+- --text-primary: #e0e0ff (white text)
+- --text-secondary: #a0a0cc (gray text)
+- --bg-secondary: #1a1a25 (dark background)
+- --bg-tertiary: #25253a (darker background)
+
+STYLING EXAMPLES:
+  * Bold text: .table-container .htCore td.bold-column { font-weight: bold !important; }
+  * Purple text: .table-container .htCore td.purple-text { color: var(--brand-primary) !important; }
+  * Centered text: .table-container .htCore td.centered { text-align: center !important; }
+  * Bold centered purple: .table-container .htCore td.purple-bold-center { color: var(--brand-primary) !important; font-weight: bold !important; text-align: center !important; }
+  * Purple background: .table-container .htCore td.purple-bg { background: rgba(147, 89, 203, 0.15) !important; }
+  * Status styling: .table-container .htCore td.status-active { background: #d4edda !important; color: #155724 !important; }
+  * Custom fonts: .table-container .htCore td.mono-text { font-family: 'JetBrains Mono', monospace !important; }
 
 Return format:
 {
@@ -326,7 +339,7 @@ Return format:
     {"data": "count", "title": "Count", "type": "numeric", "width": 120, "renderer": "thousandsRenderer"},
     {"data": "status", "title": "Status", "type": "dropdown", "source": ["active", "inactive"], "width": 120, "className": "status-styling"}
   ],
-  "css": "/* Generated CSS for column styling */\n.bold-name { font-weight: bold !important; }\n.status-styling { background: #f8f9fa !important; }"
+  "css": "/* Generated CSS for column styling */\n.table-container .htCore td.bold-name { font-weight: bold !important; color: var(--brand-primary) !important; }\n.table-container .htCore td.status-styling { background: rgba(147, 89, 203, 0.15) !important; }"
 }
 
 ${customPrompt ? `\nADDITIONAL USER REQUEST: ${customPrompt}` : ''}

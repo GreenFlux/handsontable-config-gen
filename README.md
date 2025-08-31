@@ -70,4 +70,4 @@ The AI analyzes your data and automatically:
 
 ## Demo
 
-Visit the running application at `http://localhost:5173/` to see the AI-powered table generation in action!
+Live demo at: `https://handsontable-config-gen.vercel.app/` 
