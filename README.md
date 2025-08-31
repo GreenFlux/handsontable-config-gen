@@ -1,4 +1,4 @@
-# AI-Powered Handsontable Demo
+# AI-Powered Handsontable Config Generator
 
 An intelligent data table application that fetches data from Mockoon API endpoints and automatically generates optimal Handsontable configurations using OpenAI GPT.
 
@@ -70,4 +70,4 @@ The AI analyzes your data and automatically:
 
 ## Demo
 
-Live demo at: `https://handsontable-config-gen.vercel.app/` 
+Live demo at: [https://handsontable-config-gen.vercel.app/](handsontable-config-gen.vercel.app)
